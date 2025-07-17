@@ -10,6 +10,11 @@ const bwGradual = localFont({
       weight: "500",
       style: "normal",
     },
+    {
+      path: "../fonts/BwGradual-Bold.woff2",
+      weight: "700",
+      style: "normal",
+    },
   ],
   variable: "--font-bw-gradual",
   display: "swap",
