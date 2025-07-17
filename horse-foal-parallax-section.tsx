@@ -1,58 +1,13 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
-
 export default function HorseFoalParallaxSection() {
-  const [isVisible, setIsVisible] = useState(false)
-  const sectionRef = useRef<HTMLElement>(null)
-
-  const [scrollY, setScrollY] = useState(0)
-
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY)
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsVisible(true)
-          }
-        })
-      },
-      {
-        threshold: 0.3,
-        rootMargin: "-100px 0px -100px 0px",
-      },
-    )
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
-    }
-
-    return () => observer.disconnect()
-  }, [])
-
   return (
-    <section
-      ref={sectionRef}
-      className="relative min-h-screen bg-black flex items-center justify-center overflow-hidden"
-    >
+    <section className="relative min-h-screen bg-black flex items-center justify-center overflow-hidden">
       {/* Main Content */}
       <div className="relative z-20 container mx-auto px-6">
         <div className="max-w-4xl mx-auto text-center">
-          <div
-            className={`transition-all duration-1000 ease-out ${
-              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
-            style={{
-              transform: `translateY(${scrollY * 0.3}px)`,
-            }}
-          >
-            <h2 className="text-4xl lg:text-5xl xl:text-6xl font-[family-name:var(--font-bw-gradual)] leading-tight text-white mb-8">
+          <div>
+            <h2 className="text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight text-white mb-8">
               Building the <span className="text-[#d4a964]">future</span> of racing
             </h2>
             <p className="text-xl lg:text-2xl text-gray-200 leading-relaxed font-light">
